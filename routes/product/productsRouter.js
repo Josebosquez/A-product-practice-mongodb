@@ -31,6 +31,21 @@ router.post('/create-product', function (req, res) {
     })
 })
 
+router.get('/get-product-by-id/:id', (req,res)=>{
+    productController.getProductByID(
+        req.params.id,
+        (err, payload)=>{
+            if (err){
+                res.status(500).json({message: "Error", error: err})
+            } else {
+                res.json({ message: "success", data: payload })
+            }
+        }
+    )
+    }
+)
+
+
 router.put("/update-product-by-id/:id", function (req, res) {
     productController.updateProductByID(
         req.params.id,

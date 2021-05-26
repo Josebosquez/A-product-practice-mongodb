@@ -27,8 +27,17 @@ module.exports = {
         })
     },
 
-    getProductByID: function (callback) {
-        
+    getProductByID: function (id, callback) {
+        Product.findById(
+            { _id: id },
+            (err, payload)=>{
+                if (err){
+                    callback(err,null);
+                } else {
+                    callback(null, payload)
+                }
+            }
+            )
     },
 
     updateProductByID: function (id, body, callback) {
@@ -46,7 +55,6 @@ module.exports = {
         );
     },
 
-    
     deleteProductByID: function (id, callback) {
         Product.findByIdAndRemove({_id: id}, (err, deletedPayLoad) => {
             if (err){
