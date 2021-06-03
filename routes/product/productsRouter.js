@@ -61,7 +61,7 @@ router.put("/update-product-by-id/:id", function (req, res) {
 });
 
 router.delete("/delete-user-by-id/:id", function (req, res) {
-    productController.deleteUserByID(req.params.id, function (err, deletedPayload) {
+    productController.deleteProductByID(req.params.id, function (err, deletedPayload) {
         if (err) {
             res.status(500).json({ message: "Error", error: err });
         } else {
